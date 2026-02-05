@@ -167,15 +167,15 @@ SKIPPED_COUNT=0
 ERROR_COUNT=0
 
 # 讀取差異檔案（排除 D = Deleted）
-while IFS=$'\t' read -r status file; do
+while IFS=$'\t' read -r file_status file; do
     # 處理重新命名的情況 (R100 oldfile -> newfile)
-    if [[ $status == R* ]]; then
+    if [[ $file_status == R* ]]; then
         # 取新檔名
         file=$(echo "$file" | awk '{print $NF}')
     fi
 
     # 跳過已刪除的檔案
-    if [[ $status == D* ]]; then
+    if [[ $file_status == D* ]]; then
         echo -e "${YELLOW}  跳過已刪除: $file${NC}"
         ((SKIPPED_COUNT++))
         continue

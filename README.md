@@ -18,8 +18,13 @@
 ### 基本語法
 
 ```bash
-~/Documents/scripts/package.sh [選項]
+~/Documents/scripts/export_diff_file.sh [選項]
 ```
+
+**⚠️ 重要提醒：**
+- ❌ **不要使用** `. ~/Documents/scripts/export_diff_file.sh` 或 `source ~/Documents/scripts/export_diff_file.sh`
+- ✅ **正確使用** `~/Documents/scripts/export_diff_file.sh` （直接執行）
+- 使用 `source` 會導致腳本錯誤時整個終端會話關閉
 
 ### 參數說明
 
@@ -38,13 +43,13 @@
 
 ```bash
 cd /path/to/your/project
-~/Documents/scripts/package.sh -t branch -s main -d develop -p front -o ~/Desktop/release
+~/Documents/scripts/export_diff_file.sh -t branch -s main -d develop -p front -o ~/Desktop/release
 ```
 
 這會：
 - 比較 `main` 和 `develop` 兩個 branch
 - 將差異檔案複製到 `~/Desktop/release/front/`
-- 在 `~/Desktop/release/diff.txt` 生成差異報告
+- 在 `~/Desktop/release/diff_front.txt` 生成差異報告
 
 ### 範例 2：比較當前版本與 main branch
 
